@@ -28,6 +28,10 @@ document.getElementById('withdraw-btn').addEventListener('click', function() {
     const withdrawAmount = document.getElementById('withdraw-amount');
     const withdraw = withdrawAmount.value;
     const newWithdraw = parseFloat(withdraw);
+    if (isNaN(newWithdraw)) {
+        alert('Please enter an amount.');
+        return;
+    }
 
 
     const previousWithdraw = document.getElementById('previous-withdraw');
@@ -38,20 +42,18 @@ document.getElementById('withdraw-btn').addEventListener('click', function() {
     const previousBalance = document.getElementById('previous-balance');
     const balance = previousBalance.innerText;
     const newPreviousBalance = parseFloat(balance);
-    previousBalance.innerText = newPreviousBalance - newWithdraw;
+    withdrawAmount.value = '';
 
-    if (newPreviousBalance === 0) {
+
+    if (newWithdraw > newPreviousBalance) {
         alert('Insufficient Balance!! Please Deposit Some Money.');
-        previousBalance.innerText = 00;
-        previousWithdraw.innerText = 00;
-    } else {
-
-        const totalWithdraw = newWithdraw + newPreviousWithdraw;
-        previousWithdraw.innerText = totalWithdraw;
-
+        return;
     }
 
+    previousBalance.innerText = newPreviousBalance - newWithdraw;
+    const totalWithdraw = newWithdraw + newPreviousWithdraw;
+    previousWithdraw.innerText = totalWithdraw;
 
-    withdrawAmount.value = '';
+
 
 })
