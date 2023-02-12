@@ -23,9 +23,12 @@ span {
 }
 
 #form {
+    background-color: rgba(81, 108, 156, 0.59);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
     display: flex;
     flex-direction: column;
-    padding: 0 20px;
+    padding: 20px 20px;
     width: 70%;
     margin: auto;
 }
@@ -39,8 +42,28 @@ button {
     outline: none;
 }
 
+input {
+    background-color: transparent;
+    border-bottom: 2px solid darkturquoise;
+    font-weight: 600;
+    color: white;
+}
+
 button {
     width: 100px;
     font-weight: 700;
-    color: darkolivegreen;
+    color: rgb(158, 214, 61);
+    background-color: transparent;
+    border: 2px solid rgb(165, 155, 155);
+}
+
+button:hover {
+    background-color: darkturquoise;
+    color: aliceblue;
+    border: 2px solid darkturquoise;
+}
+
+input::placeholder {
+    font-weight: 530;
+    color: aliceblue;
 }
