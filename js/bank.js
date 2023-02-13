@@ -15,7 +15,6 @@ document.getElementById('deposit-btn').addEventListener('click', function() {
 document.getElementById('withdraw-btn').addEventListener('click', function() {
 
     const withdrawAmount = getInputValue('withdraw-amount');
-
     const previousWithdraw = getElementValue('previous-withdraw');
 
     const newWithdraw = withdrawAmount + previousWithdraw;
