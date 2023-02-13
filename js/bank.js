@@ -1,58 +1,29 @@
 document.getElementById('deposit-btn').addEventListener('click', function() {
-    const depositAmount = document.getElementById('deposit-amount');
-    const deposit = depositAmount.value;
-    const newDepositAmount = parseFloat(deposit);
+    const depositAmount = getInputValue('deposit-amount');
 
+    const previousDeposit = getElementValue('previous-deposit');
 
-    const previousDeposit = document.getElementById('previous-deposit');
-    const previous = previousDeposit.innerText;
-    const previousAmount = parseFloat(previous);
+    const newDeposit = depositAmount + previousDeposit;
+    setValue('previous-deposit', newDeposit);
 
-
-    const previousBalance = document.getElementById('previous-balance');
-    const balance = previousBalance.innerText;
-    const newPreviousBalance = parseFloat(balance);
-
-
-    const totalDeposit = newDepositAmount + previousAmount;
-    previousDeposit.innerText = totalDeposit;
-    const totalBalance = newPreviousBalance + newDepositAmount;
-    previousBalance.innerText = totalBalance;
-
-    depositAmount.value = '';
+    const previousBalance = getElementValue('previous-balance');
+    const newBalance = previousBalance + depositAmount;
+    setValue('previous-balance', newBalance);
 
 })
 
 document.getElementById('withdraw-btn').addEventListener('click', function() {
 
-    const withdrawAmount = document.getElementById('withdraw-amount');
-    const withdraw = withdrawAmount.value;
-    const newWithdraw = parseFloat(withdraw);
-    if (isNaN(newWithdraw)) {
-        alert('Please enter an amount.');
-        return;
-    }
+    const withdrawAmount = getInputValue('withdraw-amount');
 
+    const previousWithdraw = getElementValue('previous-withdraw');
 
-    const previousWithdraw = document.getElementById('previous-withdraw');
-    const previous = previousWithdraw.innerText;
-    const newPreviousWithdraw = parseFloat(previous);
+    const newWithdraw = withdrawAmount + previousWithdraw;
+    setValue('previous-withdraw', newWithdraw);
 
-
-    const previousBalance = document.getElementById('previous-balance');
-    const balance = previousBalance.innerText;
-    const newPreviousBalance = parseFloat(balance);
-    withdrawAmount.value = '';
-
-
-    if (newWithdraw > newPreviousBalance) {
-        alert('Insufficient Balance!! Please Deposit Some Money.');
-        return;
-    }
-
-    previousBalance.innerText = newPreviousBalance - newWithdraw;
-    const totalWithdraw = newWithdraw + newPreviousWithdraw;
-    previousWithdraw.innerText = totalWithdraw;
+    const previousBalance = getElementValue('previous-balance');
+    const newBalance = previousBalance - withdrawAmount;
+    setValue('previous-balance', newBalance);
 
 
 
